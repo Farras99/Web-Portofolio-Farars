@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO | Muhammad Farras Azis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Instagram gradient background */
+        .instagram-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        
+        /* WhatsApp gradient background */
+        .whatsapp-gradient {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+        
+        /* Quora gradient background */
+        .quora-gradient {
+            background: linear-gradient(135deg, #b92b27 0%, #8b0000 100%);
+        }
+        
+        /* Social icon styling - Updated from version 2 */
+        .social-icon {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Animasi khusus untuk setiap platform */
+        .whatsapp-icon:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .instagram-icon:hover {
+            box-shadow: 0 8px 25px rgba(225, 48, 108, 0.4);
+        }
+        
+        .quora-icon:hover {
+            box-shadow: 0 8px 25px rgba(185, 43, 39, 0.4);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        
+        .fade-in-delay {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+        
+        .fade-in-delay-2 {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s ease-out forwards;
+        }
+        
+        .slide-up-delay {
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.3s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            animation: float 8s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 3px solid #8b5cf6;
+            white-space: nowrap;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #8b5cf6; }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white overflow-x-hidden">
+    <!-- Particles Background -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full lg:w-1/2 px-4">
+                    <div class="fade-in">
+                        <h1 class="text-lg font-semibold text-purple-400 mb-4 tracking-wide uppercase">
+                            HALO SEMUA 😎😎, NAMA SAYA
+                        </h1>
+                    </div>
+                    <div class="fade-in-delay">
+                        <h2 class="text-4xl lg:text-6xl font-black text-gradient mb-6 leading-tight">
+                            Muhammad Farras Azis
+                        </h2>
+                    </div>
+                    <div class="fade-in-delay-2">
+                        <div class="typing-effect text-xl lg:text-2xl font-medium text-gray-300 mb-6">
+                            Gamer | Car Enthusiast | Programmer | IT Tester
+                        </div>
+                    </div>
+                    <div class="slide-up">
+                        <p class="text-gray-400 text-lg mb-8 max-w-xl leading-relaxed">
+                            <span class="text-white font-bold">Website</span> ini saya buat untuk mengasah keterampilan saya dalam pemrograman dan menunjukkan karya-karya terbaik saya.
+                        </p>
+                    </div>
+                    <div class="slide-up-delay">
+                        <a href="https://www.instagram.com/farras.fr/" 
+                           class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-block">
+                            FOLLOW ME
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 px-4 mt-10 lg:mt-0">
+                    <div class="floating">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                            <img src="src/img/elonmusk.jpeg.jpeg" 
+                                 alt="Muhammad Farras Azis" 
+                                 class="relative z-10 max-w-full mx-auto rounded-full border-4 border-purple-500/30 shadow-2xl"
+                                 width="400">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full lg:w-1/2 px-4 mb-10 lg:mb-0">
+                    <div class="card-hover rounded-2xl p-8">
+                        <h3 class="text-purple-400 font-bold uppercase text-lg mb-4 tracking-wide">
+                            About Me
+                        </h3>
+                        <h2 class="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight glow-text">
+                            Ingin Tau Lebih Lengkap!!?? <br>
+                            <span class="text-gradient">Hayyuukkk, Ikutin Web Saya Sekarang Jugaa!!!!</span>
+                        </h2>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            HII SEMUAA, Nama saya Muhammad Farras Azis, biasa di panggil Farras, saya lahir di Jakarta 19 July 2007, hobi saya adalah bermain video game, game yang paling saya sering mainkan adalah GTA V
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 px-4">
+                    <div class="card-hover rounded-2xl p-8">
+                        <h2 class="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight glow-text">
+                            <span class="text-gradient">Tujuan Membuat Website</span>
+                        </h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                            Tujuan saya membuat web ini adalah untuk mengasah skill pemrograman saya agar lebih menarik dan juga rapi. Selain itu, website ini juga menjadi showcase untuk menampilkan project-project yang telah saya kerjakan.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/6281386345255" 
+                               class="social-icon whatsapp-icon whatsapp-gradient w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300">
+                                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </a>
+                            
+                            <!-- Instagram (Replaced Discord) -->
+                            <a href="https://www.instagram.com/farras.fr/" 
+                               class="social-icon instagram-icon instagram-gradient w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.233.317 2.742.677.572.36 1.001.832 1.36 1.363.36.531.615 1.376.677 2.741.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.365-.317 2.233-.677 2.741-.36.572-.832 1.001-1.363 1.36-.531.36-1.376.615-2.741.677-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.365-.062-2.233-.317-2.741-.677-.572-.36-1.001-.832-1.36-1.363-.36-.531-.615-1.376-.677-2.741-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.365.317-2.233.677-2.741.36-.572.832-1.001 1.363-1.36.531-.36 1.376-.615 2.741-.677 1.266-.058 1.646-.07 4.85-.07m0-2.163C8.736 0 8.334.012 7.05.07c-1.375.062-2.729.317-3.97.847-1.304.565-2.403 1.664-2.968 2.969-.53 1.24-.784 2.595-.846 3.97-.058 1.284-.07 1.686-.07 4.85s.012 3.566.07 4.85c.062 1.375.317 2.729.847 3.97.565 1.304 1.664 2.403 2.969 2.968 1.24.53 2.595.784 3.97.846 1.284.058 1.686.07 4.85.07s3.566-.012 4.85-.07c1.375-.062 2.729-.317 3.97-.847 1.304-.565 2.403-1.664 2.968-2.969.53-1.24.784-2.595.846-3.97.058-1.284.07-1.686.07-4.85s-.012-3.566-.07-4.85c-.062-1.375-.317-2.729-.847-3.97-.565-1.304-1.664-2.403-2.969-2.968-1.24-.53-2.595-.784-3.97-.846C15.666.012 15.264 0 12 0z"/>
+                                    <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+                                </svg>
+                            </a>
+                            
+                            <!-- Quora -->
+                            <a href="https://id.quora.com/profile/Graven-1" 
+                               class="social-icon quora-icon quora-gradient w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <span class="text-white font-bold text-xl leading-none">Q</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="fixed bottom-8 right-8 w-12 h-12 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 opacity-0 pointer-events-none">
+        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script>
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.opacity = '1';
+                scrollTopBtn.style.pointerEvents = 'auto';
+            } else {
+                scrollTopBtn.style.opacity = '0';
+                scrollTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.card-hover').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Dynamic typing effect restart
+        setInterval(() => {
+            const typingElement = document.querySelector('.typing-effect');
+            typingElement.style.animation = 'none';
+            setTimeout(() => {
+                typingElement.style.animation = 'typing 3s steps(30, end), blink-caret 0.75s step-end infinite';
+            }, 100);
+        }, 6000);
+    </script>
+</body>
+</html>
